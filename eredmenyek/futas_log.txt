@@ -1,0 +1,62 @@
+Training: 5599 kép -> 5382 a duplikátumszűrés után
+Testing: 1311 kép -> 1092 a duplikátumszűrés után
+Osztályonként: {'Training': [1321, 1333, 1406, 1322], 'Testing': [299, 198, 300, 295]}
+Jellemzők: 1838 dimenzió, 8 s
+
+=== k-NN  {'kneighborsclassifier__n_neighbors': 1}  (5 s)
+              precision    recall  f1-score   support
+
+      glioma      0.946     0.930     0.938       299
+  meningioma      0.903     0.843     0.872       198
+     notumor      0.993     0.993     0.993       300
+   pituitary      0.920     0.976     0.947       295
+
+    accuracy                          0.944      1092
+   macro avg      0.940     0.936     0.938      1092
+weighted avg      0.944     0.944     0.944      1092
+
+
+=== Logisztikus regresszió  {'logisticregression__C': 0.01}  (30 s)
+              precision    recall  f1-score   support
+
+      glioma      0.836     0.816     0.826       299
+  meningioma      0.680     0.697     0.688       198
+     notumor      0.961     0.990     0.975       300
+   pituitary      0.913     0.892     0.902       295
+
+    accuracy                          0.863      1092
+   macro avg      0.847     0.849     0.848      1092
+weighted avg      0.863     0.863     0.863      1092
+
+
+=== Random Forest  {'max_features': 0.05}  (146 s)
+              precision    recall  f1-score   support
+
+      glioma      0.876     0.709     0.784       299
+  meningioma      0.660     0.803     0.724       198
+     notumor      0.974     0.990     0.982       300
+   pituitary      0.875     0.902     0.888       295
+
+    accuracy                          0.855      1092
+   macro avg      0.846     0.851     0.845      1092
+weighted avg      0.863     0.855     0.856      1092
+
+
+=== SVM (RBF)  {'svc__C': 10, 'svc__gamma': 'scale'}  (175 s)
+              precision    recall  f1-score   support
+
+      glioma      0.946     0.880     0.912       299
+  meningioma      0.815     0.869     0.841       198
+     notumor      0.990     0.993     0.992       300
+   pituitary      0.947     0.969     0.958       295
+
+    accuracy                          0.933      1092
+   macro avg      0.925     0.928     0.926      1092
+weighted avg      0.935     0.933     0.933      1092
+
+
+                 Modell  CV accuracy  Teszt accuracy  Precision  Recall  F1 (macro)  Idő [s]
+                  k-NN        0.901           0.944      0.940   0.936       0.938    4.875
+Logisztikus regresszió        0.864           0.863      0.847   0.849       0.848   30.301
+         Random Forest        0.871           0.855      0.846   0.851       0.845  146.351
+             SVM (RBF)        0.913           0.933      0.925   0.928       0.926  174.797

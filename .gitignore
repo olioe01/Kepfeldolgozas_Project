@@ -1,0 +1,6 @@
+.venv/
+agyikepek_3_osztaly/
+agyikepek_4_osztaly/
+*.joblib
+*:Zone.Identifier
+__pycache__/
